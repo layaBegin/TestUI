@@ -31,16 +31,36 @@ public class UIManager : MonoBehaviour
         this.popUIList.Add(obj);
     }
     
-    public  void openUI(string uiName,Transform parent)
+    public  void openUI(string uiName)
     {
         string url = "Prefabs/" + uiName;
         GameObject ui =  Resources.Load<GameObject>(url);
-        ui.transform.SetParent(parent);
-        ui.transform.localPosition = new Vector3(0,0,0);
-        ui.transform.localRotation = Quaternion.identity;
-        ui.transform.localScale = new Vector3(1,1,1);
+        GameObject obj = Instantiate(ui);
+        obj.transform.SetParent(uiPos);
+        obj.transform.localPosition = new Vector3(0,0,0);
+        obj.transform.localRotation = Quaternion.identity;
+        obj.transform.localScale = new Vector3(1,1,1);
+        RectTransform rectT = obj.transform.GetComponent<RectTransform>();
+        //rectT.rect.xMin =  0.0f ;
+        uiStack.Add(obj);
     }
 
+    public void closeUI(Transform parent)
+    {
+        if (uiStack.Count <= 0) return;
+        GameObject obj = uiStack[uiStack.Count - 1];
+        uiStack.Remove(obj);
+        Destroy(obj);
+
+        if (parent != null) {
+
+        }
+        else if (this.popUIList.Count > 0)
+        {
+            this.openPopUI();
+        }
+
+    }
     public  void openPopUI()
     {
         if (this.popUIList.Count > 0)

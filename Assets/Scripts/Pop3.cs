@@ -19,6 +19,7 @@ public class Pop3 : MonoBehaviour
             uiManager = uiManagerArray[0];
         }
         btnClose.onClick.AddListener(onBtnClose);
+        btnGo.onClick.AddListener(onBtnGoUI3);
     }
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,14 @@ public class Pop3 : MonoBehaviour
 
     void onBtnClose()
     {
-        Debug.Log("====点击关闭按钮");
-        DestroyObject(this.transform.gameObject);
+        Debug.Log("====点击关闭按钮3");
+        uiManager.colsePop(this.gameObject);
+
+    }
+
+    void onBtnGoUI3()
+    {
+        Destroy(this.gameObject);
+        uiManager.openUI("ui1");
     }
 }

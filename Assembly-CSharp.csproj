@@ -58,6 +58,8 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Pop2.cs" />
     <Compile Include="Assets\Scripts\Pop3.cs" />
+    <Compile Include="Assets\Scripts\UI1.cs" />
+    <Compile Include="Assets\Scripts\ChildUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -20,6 +20,7 @@ public class Pop2 : MonoBehaviour
             uiManager = uiManagerArray[0];
         }
         btnClose.onClick.AddListener(onBtnClose);
+        btnGo.onClick.AddListener(onBtnGoUI2);
     }
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,12 @@ public class Pop2 : MonoBehaviour
 
     void onBtnClose()
     {
-        Debug.Log("====µã»÷¹Ø±Õ°´Å¥");
-        DestroyObject(this.transform.gameObject);
+        uiManager.colsePop(this.gameObject);
+    }
+
+    void onBtnGoUI2()
+    {
+        Destroy(this.gameObject);
+        uiManager.openUI("ui1");
     }
 }

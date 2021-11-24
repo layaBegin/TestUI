@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Pop1 : MonoBehaviour
+public class ChildUI : MonoBehaviour
 {
 
-    public Button btnClose;
-
-    public Button btnGo;
-
-    public Transform uiPos;
-    public Transform popPos;
+    public Button btn;
 
     private UIManager uiManager;
 
@@ -22,23 +17,15 @@ public class Pop1 : MonoBehaviour
         {
             uiManager = uiManagerArray[0];
         }
-        btnClose.onClick.AddListener(onBtnClose);
-        btnGo.onClick.AddListener(onBtnGoUI1);
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        btn.onClick.AddListener(onBtnClose);
     }
 
     void onBtnClose()
     {
-        uiManager.colsePop(this.gameObject);
-    }
-
-    void onBtnGoUI1()
-    {
-        Destroy(this.gameObject);
-        uiManager.openUI("ui1");
+        uiManager.closeUI(this.transform.parent);
     }
 }
