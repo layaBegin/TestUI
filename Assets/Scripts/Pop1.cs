@@ -11,9 +11,17 @@ public class Pop1 : MonoBehaviour
     public Button btnGo;
 
     public Transform uiPos;
+    public Transform popPos;
+
+    private UIManager uiManager;
 
     private void Awake()
     {
+        UIManager[] uiManagerArray = (UIManager[])Object.FindObjectsOfType(typeof(UIManager));
+        if (uiManagerArray.Length == 1)
+        {
+            uiManager = uiManagerArray[0];
+        }
         btnClose.onClick.AddListener(onBtnClose);
         btnGo.onClick.AddListener(onBtnGoUI1);
     }
@@ -25,12 +33,11 @@ public class Pop1 : MonoBehaviour
 
     void onBtnClose()
     {
-        Debug.Log("====µã»÷¹Ø±Õ°´Å¥");
-        DestroyObject(this.transform.gameObject);
+        uiManager.colsePop(this.gameObject);
     }
 
     void onBtnGoUI1()
     {
-        UIManager.openUI("ui1",this.uiPos);
+        //UIManager.openUI("ui1",this.uiPos);
     }
 }
